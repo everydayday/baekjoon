@@ -1,15 +1,8 @@
 N = int(input())
-flag = False
-for i in range(N):
-    sum = 0
-    n = i
-    while(n != 0):
-        sum += n % 10
-        n = n // 10
-    sum += i
-    if sum == N :
-        flag = True
-        print(i); break
-    
-if not flag :
-    print(0)
+
+for i in range(max(0,N - len(str(N)) * 9), N):  # 최소 탐색 범위 설정
+    if sum(map(int, str(i))) + i == N:  # 생성자 판별
+        print(i)
+        break  # 생성자 찾았으면 반복 종료
+else:
+    print(0)  # 생성자가 없을 경우 출력
